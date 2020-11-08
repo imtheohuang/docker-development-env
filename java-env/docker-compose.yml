@@ -1,0 +1,32 @@
+version: "3"
+
+services: 
+
+  mysql: 
+    image: mysql:5.7
+    container_name: java_env_mysql
+    volumes: 
+      - ./mysql/my.cnf:/etc/mysql/my.cnf:ro
+      - ./mysql/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+    ports: 
+      - 3306:3306
+
+  tomcat: 
+    image: tomcat:8.5
+    container_name: java_env_tomcat
+    volumes: 
+      - ./app:/usr/local/tomcat/webapps/ROOT
+    ports: 
+      - 8080:8080
+
+  nginx: 
+    restart: always
+    image: nginx
+    container_name: java_env_nginx
+    ports: 
+      - 80:80
+    volumes: 
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/wwwroot:/usr/share/nginx/wwwroot
