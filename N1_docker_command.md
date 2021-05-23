@@ -1,5 +1,10 @@
+# N1 doccker contaniner command 
 
-Aria2 
+**arm64**
+
+
+
+## Aria2 
 
 ``` shell
 docker run -d \
@@ -19,7 +24,9 @@ docker run -d \
   -v /mnt/H1/Share/Apps/Aria2:/downloads \
   p3terx/aria2-pro
 ```
-Ariang
+
+
+## Ariang
 
 ```shell
 docker run -d \
@@ -33,7 +40,7 @@ docker run -d \
 
 
 
-Nginx: 
+## Nginx
 
 ```shell
 docker run -d --name nginx --restart always \
@@ -46,9 +53,31 @@ nginx
 
 
 
+## TTnode
+
+### zhang0510/ttnode-arm64
+
+```bash
+docker run -itd -v /mnt/H1/tangtian:/mnts --name ttnode --hostname ttnode --net=host --privileged=true --restart=always zhang0510/ttnode-arm64
+```
 
 
-未实践 `Image` *<u>wahyd4/aria2-ui</u>*: Aria2 + AriaNg + FileManager
+
+### ericwang2006/ttnode
+
+```  bash
+docker run -itd --restart=always \
+-v /mnt/H1/tangtian:/mnts \
+-v /opt/docker-dir/ttnod/config:/config \
+--name ttnode \
+--hostname ttnode \
+--net=host --privileged=true \
+ ericwang2006/ttnode
+```
+
+
+
+## 未实践 `Image` *<u>wahyd4/aria2-ui</u>*: Aria2 + AriaNg + FileManager
 
 ```shell
 docker run -d --name ariang \
