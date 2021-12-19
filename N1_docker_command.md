@@ -98,3 +98,23 @@ docker run -d --name ariang \
   -v <the folder of aria2.conf and aria2.session>:/app/conf \
   wahyd4/aria2-ui
 ```
+
+
+
+## 青龙
+
+```shell
+docker run -dit \
+  -v /opt/docker-dir/qinglong/config:/ql/config \
+  -v /opt/docker-dir/qinglong/log:/ql/log \
+  -v /opt/docker-dir/qinglong/db:/ql/db \
+  -v /opt/docker-dir/qinglong/repo:/ql/repo \
+  -v /opt/docker-dir/qinglong/raw:/ql/raw \
+  -v /opt/docker-dir/qinglong/scripts:/ql/scripts \
+  -p 5700:5700 \
+  --name qinglong \
+  --hostname qinglong \
+  --restart unless-stopped \
+  whyour/qinglong:latest
+```
+
