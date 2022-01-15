@@ -118,3 +118,16 @@ docker run -dit \
   whyour/qinglong:latest
 ```
 
+
+
+### aliyundrive-webdav
+
+```
+docker run -d --name=aliyundrive-webdav --restart=unless-stopped -p 8080:8080 \
+  -v /opt/aliyundrive-webdav/:/etc/aliyundrive-webdav/ \
+  -e REFRESH_TOKEN='64b81df3887e4228a7dc851b3f463b71' \
+  -e WEBDAV_AUTH_USER=admin \
+  -e WEBDAV_AUTH_PASSWORD=123abcABC \
+  messense/aliyundrive-webdav
+```
+
