@@ -1,0 +1,79 @@
+version: "3.3"
+services:
+  heimdall:
+    image: lscr.io/linuxserver/heimdall:latest
+    container_name: heimdall
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+    volumes:
+      - /opt/docker_dir/heimdall/config:/config
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
+
+  ariang:
+    image: p3terx/ariang:latest
+    container_name: ariang
+    restart: unless-stopped
+    ports:
+      - '6880:6880'
+    logging:
+        options:
+            max-size: 1m
+
+  aria2-pro:
+    container_name: aria2-pro
+    restart: unless-stopped
+    logging:
+        options:
+            max-size: 1m
+    environment:
+        - PUID=0
+        - PGID=0
+        - UMASK_SET=022
+        - RPC_SECRET=123abcABC
+        - RPC_PORT=6800
+        - LISTEN_PORT=6888
+    ports:
+        - '6800:6800'
+        - '6888:6888'
+        - '6888:6888/udp'
+    volumes:
+        - '/opt/docker_dir/aria2:/config'
+        - '/mnt/H1/Share/Apps/Aria2:/downloads'
+    image: p3terx/aria2-pro
+
+  portainer-ce:
+    ports:
+        - '8000:8000'
+        - '9000:9000'
+    container_name: portainer
+    restart: always
+    volumes:
+        - '/var/run/docker.sock:/var/run/docker.sock'
+        - '/opt/docker_dir/portainer_data:/data'
+    image: portainer/portainer-ce
+  qinglong:
+    volumes:
+        - '/opt/docker_dir/qinglong/config:/ql/config'
+        - '/opt/docker_dir/qinglong/log:/ql/log'
+        - '/opt/docker_dir/qinglong/repo:/ql/repo'
+        - '/opt/docker_dir/qinglong/raw:/ql/raw'
+        - '/opt/docker_dir/qinglong/scripts:/ql/scripts'
+    ports:
+        - '5700:5700'
+    container_name: qinglong
+    hostname: qinglong
+    restart: unless-stopped
+    image: 'whyour/qinglong:latest'
+
+  docker-thunder-xware:
+    privileged: true
+    container_name: xware
+    network_mode: host
+    volumes:
+        - '/mnt/H1/Share/Apps/thunder:/app/TDDOWNLOAD'
+    image: zxq1002/docker-thunder-xware
