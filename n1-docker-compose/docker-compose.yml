@@ -90,3 +90,13 @@ services:
         - UMASK=022
     container_name: alist
     image: 'xhofe/alist:latest'
+    
+  xiaoya:
+    ports:
+        - '5678:80'
+        - '15244:5244'
+    volumes:
+        - '/etc/xiaoya:/opt/docker_dir/xiaoya/data'
+    restart: always
+    container_name: xiaoya
+    image: 'xiaoyaliu/alist:latest'
