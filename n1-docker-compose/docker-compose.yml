@@ -81,7 +81,7 @@ services:
   alist:
     restart: always
     volumes:
-        - '/etc/alist:/opt/docker_dir/alist/data'
+        - '/opt/docker_dir/alist:/opt/alist/data'
     ports:
         - '5244:5244'
     environment:
@@ -96,7 +96,7 @@ services:
         - '5678:80'
         - '15244:5244'
     volumes:
-        - '/etc/xiaoya:/opt/docker_dir/xiaoya/data'
+        - '/opt/docker_dir/xiaoya:/data'
     restart: always
     container_name: xiaoya
     image: 'xiaoyaliu/alist:latest'
