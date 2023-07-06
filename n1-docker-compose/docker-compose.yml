@@ -96,7 +96,20 @@ services:
         - '5678:80'
         - '15244:5244'
     volumes:
-        - '/opt/docker_dir/xiaoya:/data'
+        - '/opt/docker_dir/xiaoya/data:/data'
     restart: always
     container_name: xiaoya
     image: 'xiaoyaliu/alist:latest'
+    
+  kubespider: 
+    container_name: kubespider
+    ports: 
+        - '3080:3080'
+    volumes: 
+        - '/opt/docker_dir/kubespider/.config:/app/.cconfig'
+    environment: 
+        - PUID=0
+        - PGID=0
+    network_mode: host
+    restart: unless-stopped
+    image: cesign/kubespider:latest
