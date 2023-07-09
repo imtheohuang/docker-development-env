@@ -70,13 +70,13 @@ services:
     restart: unless-stopped
     image: 'whyour/qinglong:latest'
 
-  docker-thunder-xware:
-    privileged: true
-    container_name: xware
-    network_mode: host
-    volumes:
-        - '/mnt/H1/Share/Apps/thunder:/app/TDDOWNLOAD'
-    image: zxq1002/docker-thunder-xware
+#  docker-thunder-xware:
+#    privileged: true
+#    container_name: xware
+#    network_mode: host
+#    volumes:
+#        - '/mnt/H1/Share/Apps/thunder:/app/TDDOWNLOAD'
+#    image: zxq1002/docker-thunder-xware
 
   alist:
     restart: always
