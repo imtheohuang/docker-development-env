@@ -106,7 +106,7 @@ services:
     ports: 
         - '3080:3080'
     volumes: 
-        - '/opt/docker_dir/kubespider/.config:/app/.cconfig'
+        - '/opt/docker_dir/kubespider/.config:/app/.config'
     environment: 
         - PUID=0
         - PGID=0
