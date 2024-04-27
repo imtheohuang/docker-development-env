@@ -91,15 +91,15 @@ services:
     container_name: alist
     image: 'xhofe/alist:latest'
     
-  xiaoya:
-    ports:
-        - '5678:80'
-        - '15244:5244'
-    volumes:
-        - '/opt/docker_dir/xiaoya/data:/data'
-    restart: always
-    container_name: xiaoya
-    image: 'xiaoyaliu/alist:latest'
+#  xiaoya:
+#    ports:
+#        - '5678:80'
+#        - '15244:5244'
+#    volumes:
+#        - '/opt/docker_dir/xiaoya/data:/data'
+#    restart: always
+#    container_name: xiaoya
+#   image: 'xiaoyaliu/alist:latest'
     
   kubespider: 
     container_name: kubespider
